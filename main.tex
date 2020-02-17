@@ -1,0 +1,89 @@
+% --- PREAMBLE ------------------------------------------------------
+
+\documentclass[12pt, oneside, draft]{book}
+
+\usepackage[letterpaper, margin=1in, bindingoffset=0.5in]{geometry}
+\usepackage{fancyhdr} %For Header and Footer
+\usepackage{setspace} %\doublespacing
+\usepackage{float} % Floats such as figures and tables
+\usepackage[font=small]{caption} % Customize caption formatting; [font=small], etc
+\usepackage[closeFloats]{fltpage} %For long captions->adjacent page; <CaptionAfterwards, closeFloats>
+\usepackage[utf8]{inputenc} %For unicode symbols
+\usepackage{amsmath} %Math display notation
+\usepackage[amssymb]{SIunits} %Scientific units
+\usepackage[round,authoryear]{natbib} %Citations and bibliography
+\usepackage{graphicx}
+
+\graphicspath{./Figures}
+
+\includeonly{Chapter2} % To work on parts without rendering all
+
+%--------------------------------------------------------------------
+
+\begin{document}
+
+% Document Parameters
+%\setcitestyle{authoryear}
+
+% --- FRONT MATTER --------------------------------------------------
+\frontmatter
+\pagestyle{plain} %Just page numbers for now
+
+% Abstract Page
+\addcontentsline{toc}{chapter}{Abstract}
+\include{Frontmatter/Abstract}
+
+% Title Page
+\include{Frontmatter/Title}
+
+% Copyright Notice
+\include{Frontmatter/Copyright_Notice}
+
+% Table of Contents
+\tableofcontents
+
+% List of Figures
+\clearpage %\cleardoublepage %for openright
+\addcontentsline{toc}{chapter}{\listfigurename}
+\listoffigures
+
+% List of Tables
+\clearpage %\cleardoublepage %for openright
+\addcontentsline{toc}{chapter}{\listtablename} %Add line to contents page
+\listoftables
+
+% Acknowledgments
+\clearpage %\cleardoublepage %for openright
+\addcontentsline{toc}{chapter}{Acknowledgments}
+\include{Frontmatter/Acknowledgments}
+
+% Dedication
+\include{Frontmatter/Dedication}
+
+% --- MAIN TEXT -----------------------------------------------------
+\mainmatter
+
+% Setup Header for Main Text
+\input{Header}
+
+% Chapters
+\include{Introduction}
+\include{Chapter2} % From Cerebral Cortex
+\include{Chapter3} % From Nature Neuroscience
+\include{Chapter4}
+
+% --- BACK MATTER ----------------------------------------------------
+\pagestyle{plain} %Just page numbers
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}
+
+% --- USEFUL COMMANDS --------------------------------------------------------
+%
+% \afterpage{\clearpage} % Possibly of use for positioning figures
+
+
+%--- PACKAGES ----------------------------------------------------------------
+%
+%\usepackage[notoc]{tocbibind} %To include Lists of Figures and Tables in TOC
