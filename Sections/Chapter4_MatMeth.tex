@@ -1,0 +1,70 @@
+\section{Materials and Methods}
+
+\newcommand{\tg}[1]{\textsuperscript{\textit{#1}}}
+
+\subsection*{Experimental Subjects}
+Experimental subjects ($N=18$) were adult male transgenic mice from a C57BL/6J genetic background (\ref{tab:expTable}). All mice were hemizygous hybrids of the following strains purchased from the Jackson Laboratory (Bar Harbor, ME):
+\begin{itemize}
+  \item Sst\tg{tm2.1(cre)Zjh}/J (SST-cre; stock no. 013044)
+  \item Vip\tg{tm1(cre)Zjh}/J (VIP-cre; stock no. 010908)
+  \item B6.129P2-Pvalb\tg{tm1(cre)Arbr}/J (PV-cre; stock no. 017320)
+  \item B6.Cg-Gt(ROSA)26Sor\tg{tm9(CAG-tdTomato)Hze}/J (flex-tdTomato; stock no. 007909)
+\end{itemize}
+Additionally, six subjects were bred from B6.Cg-Igs7\tg{tm148.1(tetO-GCaMP6f,CAG-tTA2)Hze}/J mice (Ai148; \cite{daigle18}) kindly provided by Hongkui Zeng (Allen Institute, Seattle, WA). Specifically, a total of seven PV-cre;flex-tdTomato mice, five SST-cre;flex-tdTomato mice, five VIP-cre;flex-GCaMP6f mice, and one PV-cre;flex-GCaMP6f mouse were used for our experiments.
+
+Mice were housed in a dedicated facility administered by the Yale Animal Resource Center. Five littermates were kept together per cage, supplemented with an igloo and cotton nesting material. Room lights were turned on from 7 am until 7 pm. Training and experiments were conducted outside of the facility between the hours of 10 am and 6 pm. All experimental procedures were approved by the Institutional Animal Care and Use Committee of Yale University.
+
+\subsection*{Rule Switching Task}
+% bias_factor = double(hit_rates[1] - hit_rates[2])/double(100);
+% 		temp = random()*double(2) + bias_factor;
+
+% Mice were secured inside a... using an implanted headplate to an apparatus consisting of…
+% Mice were seated in a XX-mm-diameter tube…
+
+% ...Action blocks alternated between left and right. 
+
+\subsection*{Cell Type Specific Imaging}
+We used two-photon calcium imaging to monitor neural activity at cellular resolution while mice participated in the rule switching task. To separately measure the activity of somatostatin- (SST; $N=309$ cells from 5 mice), parvalbumin- (PV; $N=263$ cells from 3 mice), and vasointestinal peptide-expressing (VIP; $N=488$ cells from 5 mice) interneurons, as well as CamKIIa-expressing excitatory neurons (PYR; $N=3952$ cells from 5 mice), we took three different approaches which have all been validated in earlier studies.
+
+To image the activity of SST and PV neurons, a cyclic recombinase- (cre) dependent adeno-associated virus encoding GCaMP6s (AAV1-hSyn-Flex-GCaMP6s-WPRE-SV40, Penn Vector Core) was injected intracranially in hybrid reporter mice (SST::tdTomato or PV::tdTomato) that express both cre and the orange fluorescent protein, tdTomato, selectively in the cell-type of interest \citep{taniguchi11, ali20}. Neuronal expression of tdTomato was aimed at providing a frame-by-frame anatomical reference channel to be used later for movement correction of data from the activity-dependent (GCaMP) channel. 
+
+To monitor VIP and PV neurons, we bred VIP::GCaMP6f and PV::GCaMP6f hybrid reporter mice, which selectively express GCaMP6f in the cell-type of interest \citep{daigle18,devries20}. 
+To monitor pyramidal neurons, five PV-cre::tdTomato mice were injected intracranially with an AAV encoding GCaMP6f under control of the CaMKII-promoter (AAV1-CaMKII-GCaMP6f-WPRE-SV40, Penn Vector Core; \cite{kuchibhotla17,ali20}). 
+
+\subsubsection*{Intracranial Injections and Cranial Window Implantation}
+Subjects were treated preoperatively with analgesic and antiinflammatory drugs (car\-profen, 5 mg/kg, SC, \#024751, Butler Animal Health; and dexamethasone, 3 mg/kg, SC, Dexaject SP, \#002459, Henry Schein Animal Health). Anesthesia was induced with 2\% isoflurane in oxygen, and then gradually reduced to 1--1.5\% for the remainder of the procedure. A water-circulating heating pad (Gaymar Stryker) was placed under the animal’s body, and maintained at 38\si{\celsius}.
+
+After stabilizing the head in a stereotaxic frame with ear bars (David Kopf Instruments), the scalp was shaven and cleaned with Betadine (Perdue Products L.P.). The surface of the skull was then exposed through a midsagittal incision extending from the interaural line to the level of the orbits. The periosteum was removed, and the skull cleaned, by scrubbing briefly with 3\% hydrogen peroxide on a cotton swab. All contacted tissue was then rinsed immediately with artificial cerebrospinal fluid (aCSF; in mM: 5 KCl, 5 HEPES, 135 NaCl, 1 MgCl$_2$, 1.8 CaCl$_2$; pH 7.3).
+
+A 3-mm-diameter circular craniotomy, centered approximately over the target location in M2 (AP, $bregma + 1.5$ mm; ML, $bregma - 0.5$ mm), was made using a 400-\si{\um}-diameter spherical bur attached to a Foredom dental drill. The circumscribed section of skull was then carefully removed with fine forceps to expose the dura. A small cube of Gelfoam (McKesson), presaturated with aCSF, was immediately applied to ensure hemostasis. Several additional cubes of saturated Gelfoam were used to gently cleanse the dural surface of any debris.
+
+For procedures requiring intracranial AAV injections, a fine-tipped glass micro\-pipette was secured to a microinjection system (Nanoject II, Drummond) and front-filled with ~1.5 \si{\uL} of the viral suspension. All viruses were stored as frozen aliquots, and diluted to approximately 1012 genome copies per mL in PBS prior to injection. Four injections were made, forming a 200-\si{\um}-wide square centered on the target location. Approximately 46 nL were injected into each site, at a depth of 400 \si{\um} below the dura. After the last injection, the dura was cleaned thoroughly with saturated Gelfoam.
+
+A glass window implant was then fit to the craniotomy and glued to the surrounding skull surface. The implant consisted of five concentric, \#1 thickness, circular glass coverslips (Warner Instruments) joined with an optical adhesive (NOA 61, Norland). The superficial layer was wider than the remaining layers (4- vs. 3-mm-diameter), to form a lip that could be attached to the skull. Prior to implantation, the window was swabbed thoroughly with 90\% ethanol and then rinsed with aCSF. After flooding the craniotomy with aCSF, the implant was lowered into place and secured with a high-viscosity adhesive (Loctite 454). After allowing ~10 min for the adhesive to cure, a custom-made stainless steel headplate (eMachineShop.com) was cemented to the skull with C\&B Metabond (Parkell). Care was taken to cover any exposed bone.
+
+Subjects were treated post-operatively with carprofen (5 mg/kg, SC), diluted to 0.17 mg/mL in 0.9\% preservative-free saline (Hospira) for fluid support. The treatment was repeated twice daily for three days following the surgery, along with a daily injection of dexamethasone (3 mg/kg, SC). At least one full week was allowed for recovery prior to behavioral training.
+
+\subsubsection*{Two-Photon Imaging}
+To image neural activity at cellular resolution in vivo, an ultrafast laser beam (Cha\-meleon Ultra II, Coherent) was focused on the brain tissue through a water immersion objective (XLUMPLFLN, 20X/0.95 NA; Olympus) attached to a Movable Objective Microscope (Sutter Instrument). Ultrasound gel (\#9004352SM, Henry Schein) was applied to the cranial window as an immersion medium, to prevent a gradual image degradation observed in earlier experiments due to evaporation.
+Excitation power after the objective was adjusted using a Pockels cell (350-80-LA-
+02; Conoptics), up to a maximum of 100 mW. Emitted fluorescence was split between two channels and bandpass filtered at center wavelengths of 525 nm (GCaMP6) and 605 nm (tdTomato) prior to collection by a set of GaAsP photomultiplier tubes (H7422P-40MOD; Hamamatsu). Excitation wavelength was set to 1020--1050 nm for most experiments, in order to optimize the GCaMP6:tdTomato emission ratio. For single-channel GCaMP6 imaging, an excitation wavelength of 940 nm was used.
+
+Image acquisition was controlled by the ScanImage package for MATLAB \citep{pologruto03}. Time-lapse images of the field-of-view were acquired using a bidirectional raster scan at 1kHz. Each imaging frame contained 256 × 256 pixels, for a nominal frame rate of 3.62 Hz including flyback time. Frames from each behavioral trial were saved separately in multi-page tagged image file format (TIFF). Imaging and behavioral data were synchronized by assigning an external trigger in ScanImage to a TTL pulse sent by NBS Presentation at the start of each trial. Upon receiving the trigger, ScanImage would write the current frame to the first page of a new TIFF. A timestamp for the trigger would be recorded in the TIFF header, as well as in a text file logged by Presentation.        
+
+The target imaging location in M2 was found before each session as follows. The AP coordinate (bregma+1.5mm) was approximated by centering the field-of-view (FOV) on a small dot that had been marked in permanent ink along the perimeter of the cranial window during stereotaxic surgery surgery. The ML coordinate (bregma-1.5mm) was approximated by centering the FOV on the superior sagittal sinus and then subtracting 500 \si{\um}. Some deviations from these coordinates were permitted, eg, in cases of occluding blood vessels, but all FOVs analyzed were centered within 200 \si{\um} of the target location. The approximate anatomical depth of each FOV was estimated as the distance from a focal plane centered on the dura directly above it, calculated from the corresponding depth measurements displayed on the microcontroller. Depth ranged 212--415 \si{\um} for SST sessions (mean: 228 \si{\um}, N=14), 109--216 for VIP sessions (mean: 175 \si{\um}, N=19), 215--383 for PV sessions (mean: 292, N=12), and 170--278 for PYR sessions (mean: 219, N=20). Brain tissue was not analyzed post-mortem to confirm the estimated imaging locations, but all fields-of-view were assumed to be within layers 2/3 of M2.
+
+\subsection*{Analysis of Behavioral Data}
+\subsection*{Analysis of Imaging Data}
+\subsubsection*{Movement Correction}
+\subsubsection*{Cellular Fluorescence Measurements}
+\subsubsection*{Alignment and Trial Averaging}
+\subsubsection*{Modulation of Neural Activity by Task Variables}
+
+\subsection*{Statistics}
+All statistics were computed in MATLAB.
+
+Descriptive statistics are reported either as the \emph{sample} $mean \pm SEM$, or as the sample median and interquartile range (IQR), at a precision consistent with the primary data. For all analyses, point estimates were calculated as the mean within each session, and the sample size $N$ was given by the number of sessions considered. 
+
+For behavioral comparisons, the sampling distribution for the mean difference across groups was assumed to be normal. No explicit test of normality was performed. However, the sample size  ($N=65$) was sufficiently large to rely on parametric statistics. Specifically, a paired t-test was used for comparisons across two groups (eg, hit vs. error trials). For comparisons across sound, action-left, and action-right blocks, a repeated measures model was fit to the data using the function \texttt{fitrm}, with the session number included as the only between-subjects factor. A two-way, within-subject design was used to assess the main effects of \emph{cue} and \emph{block-type}, as well as any \emph{cue} $\times$ \emph{block-type} interaction. All $F$-statistics were estimated by feeding the parameters of the model into the function \texttt{ranova}.
+
+Neural preference and selectivity measures were compared to null results generated using shuffled trial types. These comparisons were made within each cell type, and hence sample sizes were smaller (range: 12--20 sessions). Additionally, the empirical distributions were often notably skewed, with unequal variances relative to the corresponding null distribution. Therefore, a signed-rank test was used for these comparisons. For comparisons across multiple cell types we used the Kruskal-Wallis $H$-test, followed by Tukey's post hoc method for multiple comparisons. 
