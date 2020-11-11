@@ -1,70 +1,170 @@
-\section{Materials and Methods}
+
+% TEXT OF MATERIALS & METHODS 
+
+\nnsec{Materials and Methods}
+\label{sec:methods} %Label for \autoref, etc.
 
 \newcommand{\tg}[1]{\textsuperscript{\textit{#1}}}
 
 \subsection*{Experimental Subjects}
-Experimental subjects ($N=18$) were adult male transgenic mice from a C57BL/6J genetic background (\ref{tab:expTable}). All mice were hemizygous hybrids of the following strains purchased from the Jackson Laboratory (Bar Harbor, ME):
-\begin{itemize}
-  \item Sst\tg{tm2.1(cre)Zjh}/J (SST-cre; stock no. 013044)
-  \item Vip\tg{tm1(cre)Zjh}/J (VIP-cre; stock no. 010908)
-  \item B6.129P2-Pvalb\tg{tm1(cre)Arbr}/J (PV-cre; stock no. 017320)
-  \item B6.Cg-Gt(ROSA)26Sor\tg{tm9(CAG-tdTomato)Hze}/J (flex-tdTomato; stock no. 007909)
-\end{itemize}
-Additionally, six subjects were bred from B6.Cg-Igs7\tg{tm148.1(tetO-GCaMP6f,CAG-tTA2)Hze}/J mice (Ai148; \cite{daigle18}) kindly provided by Hongkui Zeng (Allen Institute, Seattle, WA). Specifically, a total of seven PV-cre;flex-tdTomato mice, five SST-cre;flex-tdTomato mice, five VIP-cre;flex-GCaMP6f mice, and one PV-cre;flex-GCaMP6f mouse were used for our experiments.
+Experimental subjects ($N=18$) were adult male transgenic mice from a C57BL/6J genetic background (Supplementary Table \ref{tab:expTable}). All mice were hemizygous hybrids of the following strains purchased from the Jackson Laboratory (Bar Harbor, ME): Sst\tg{tm2.1(cre)Zjh}/J (\emph{SST-cre}; stock no. 013044), Vip\tg{tm1(cre)Zjh}/J (\emph{VIP-cre}; stock no. 010908), B6.129P2-Pvalb\tg{tm1(cre)Arbr}/J (\emph{PV-cre}; stock no. 017320), or B6.Cg-Gt(ROSA)26Sor\tg{tm9(CAG-tdTomato)Hze}/J (\emph{flex-tdTomato}; stock no. 007909). Six subjects were bred from B6.Cg-Igs7\tg{tm148.1(tetO-GCaMP6f,CAG-tTA2)Hze}/J mice (\emph{Ai148}; Allen Institute). Specifically, a total of seven \emph{PV-cre;flex-tdTomato mice}, five \emph{SST-cre;flex-tdTomato mice}, five \emph{VIP-cre;Ai148} mice, and one \emph{PV-cre;Ai148} mouse were used for our experiments.
+
+
+% Six subjects were bred from B6.Cg-Igs7\tg{tm148.1(tetO-GCaMP6f,CAG-tTA2)Hze}/J mice (\emph{Ai148}; \cite{daigle18}) provided by Hongkui Zeng (Allen Institute, Seattle, WA).
 
 Mice were housed in a dedicated facility administered by the Yale Animal Resource Center. Five littermates were kept together per cage, supplemented with an igloo and cotton nesting material. Room lights were turned on from 7 am until 7 pm. Training and experiments were conducted outside of the facility between the hours of 10 am and 6 pm. All experimental procedures were approved by the Institutional Animal Care and Use Committee of Yale University.
 
+
+\subsection*{Behavioral Apparatus}
+
+All imaging data were collected while mice engaged in a sound-guided decision making task under head-fixation. The behavioral apparatus was nearly identical to that used in earlier studies \citep{siniscalchi2016fast,siniscalchi2019enhanced}. 
+
+Briefly, the subject was placed under a two-photon microscope, resting in a modified stainless steel tube with a 1.25 inch inside diameter. Head-fixation was achieved using a custom stainless steel headplate and headplate holder (eMachineShop) secured to an anodized aluminum breadboard (MB4, Thorlabs) that could be bolted to an optical table holding the microscope. 
+
+Sound cues were played through a set of PC speakers (S120; Logitech), and calibrated to a peak amplitude of $\sim 85$ \si{\dB}. 
+
+Two 20-guage stainless steel dispensing tips (CML Supplies) placed on either side of the subject's mouth were used as lick spouts for the delivery of water rewards. The spouts were mounted in a 3D-printed plastic adapter to a set of optical components that allowed positional adjustment in three dimensions (height-adjustable post and dovetail rails; Thorlabs). A battery-operated lick detection circuit
+\citep{slotnick2009simple} was connected to each spout with soldered wire leads. Signals from the detector, which supplies 5 \si{\V} upon contact with the tongue, were digitized with a USB data acquisition device (USB-201; Measurement
+Computing) and recorded on a desktop PC. 
+
+Water rewards ($\sim$ 2 \si{\uL}) were gravity-fed to each spout through Tygon tubing (Cole-Parmer) equipped with a solenoid valve (MB202VA30L204; Gems Sensors) controlled by TTL pulses from a second USB-201. 
+
+The entire task structure---including sound cue playback, lick detection, and reward delivery---was automated using custom scripts written for Presentation
+(Neurobehavioral Systems, Inc.). The computer code and all details of the behavioral apparatus can be found at \url{www.github.com/Kwan-Lab}.
+
 \subsection*{Rule Switching Task}
-% bias_factor = double(hit_rates[1] - hit_rates[2])/double(100);
-% 		temp = random()*double(2) + bias_factor;
 
-% Mice were secured inside a... using an implanted headplate to an apparatus consisting of…
-% Mice were seated in a XX-mm-diameter tube…
+The task consisted of a set of trials in which subjects could choose between two stainless steel water spouts placed on either side of the mouth, only one of which (the target) would provide a water reward on a given trial. A sound cue played at the start of each trial indicated the target side. The cues were repeated logarithmic chirps of 500 ms duration, with starting and ending frequencies of either 5 and 15 kHz (upsweeps), or 15 and 5 kHz (downsweeps), respectively. 
 
-% ...Action blocks alternated between left and right. 
+Each trial was governed by one of three rules---\emph{sound}, \emph{action-left}, or \emph{action-right}---that defined the target water spout associated with each sound cue. In the sound rule, upsweeps indicated a left target, and downsweeps indicated a right target. In the action-left rule, the target on every trial was the left spout, regardless of whether upsweeps or downsweeps were presented. Conversely, under the action-right rule, the right spout was always the target, irrespective of the sound cue. 
+The sound cue was terminated by the first lick following cue onset, up to a maximum of 2 s. If the target spout was chosen (a hit), subjects were immediately rewarded with $\sim$ 2 \si{\uL} of water. Choosing the non-target spout (an error) resulted in playback of a mild white noise sound. The next sound cue was presented after a random interval drawn from a truncated exponential distribution (mean: 8 s, range: 5--16 s). 
+
+Sessions were structured into alternating blocks of sound and action trials, and action blocks alternated between the action-left and action-right rule. The first action rule was drawn randomly. Each rule was enforced for at least 20 trials at a time, with the exact number of trials subject to a performance criterion: after 20 consecutive trials with $\geq 85\%$ accuracy, a new rule block would begin on the next trial. New trials were generated until the subject failed to respond (missed) for twenty consecutive trials.
+
+To prepare for the rule-switching task, subjects were first trained for several weeks on trials governed by the sound rule. Training was conducted once daily for 6 d/wk, starting $>7$ d following the completion of surgery. On non-training days, subjects were administered water \emph{ad libitum} for 15 min in their home cages. Body weight was measured before and after each daily training session to guard against dehydration, and all mice maintained $>85\%$ of their starting body weight over the course of study. 
+Full details of the training procedure can be found in \cite{siniscalchi2016fast} or \cite{siniscalchi2019enhanced}, with two exceptions. Our previous studies 1) included a 500 ms "grace period" following the sound cue, during which time any recorded responses would not affect the trial outcome, and 2) used a fixed intertrial interval of 7 s following cue offset. All other details of the behavioral protocols were conserved. 
 
 \subsection*{Cell Type Specific Imaging}
-We used two-photon calcium imaging to monitor neural activity at cellular resolution while mice participated in the rule switching task. To separately measure the activity of somatostatin- (SST; $N=309$ cells from 5 mice), parvalbumin- (PV; $N=263$ cells from 3 mice), and vasointestinal peptide-expressing (VIP; $N=488$ cells from 5 mice) interneurons, as well as CamKIIa-expressing excitatory neurons (PYR; $N=3952$ cells from 5 mice), we took three different approaches which have all been validated in earlier studies.
+We used two-photon calcium imaging to monitor neural activity at cellular resolution while mice participated in the rule switching task. To separately measure the activity of somatostatin- (SST; $N=290$ cells from five mice), parvalbumin- (PV; $N=263$ cells from three mice), and vasointestinal peptide-expressing interneurons (VIP; $N=488$ cells from five mice), as well as CamKIIa-expressing excitatory neurons (PYR; $N=3952$ cells from five mice), we took three different approaches which have all been validated in earlier studies.
 
-To image the activity of SST and PV neurons, a cyclic recombinase- (cre) dependent adeno-associated virus encoding GCaMP6s (AAV1-hSyn-Flex-GCaMP6s-WPRE-SV40, Penn Vector Core) was injected intracranially in hybrid reporter mice (SST::tdTomato or PV::tdTomato) that express both cre and the orange fluorescent protein, tdTomato, selectively in the cell-type of interest \citep{taniguchi11, ali20}. Neuronal expression of tdTomato was aimed at providing a frame-by-frame anatomical reference channel to be used later for movement correction of data from the activity-dependent (GCaMP) channel. 
+To image the activity of SST and PV neurons, a cyclic recombinase- (cre) dependent adeno-associated virus encoding GCaMP6s (AAV1-hSyn-Flex-GCaMP6s-WPRE-SV40, Penn Vector Core) was injected intracranially in hybrid reporter mice (five SST::tdTomato and two PV::tdTomato) that express both cre and the orange fluorescent protein, tdTomato, selectively in the cell-type of interest \citep{taniguchi11, ali20}. Neuronal expression of tdTomato was aimed at providing a frame-by-frame anatomical reference channel to be used later for movement correction of data from the activity-dependent (GCaMP) channel. 
 
-To monitor VIP and PV neurons, we bred VIP::GCaMP6f and PV::GCaMP6f hybrid reporter mice, which selectively express GCaMP6f in the cell-type of interest \citep{daigle18,devries20}. 
-To monitor pyramidal neurons, five PV-cre::tdTomato mice were injected intracranially with an AAV encoding GCaMP6f under control of the CaMKII-promoter (AAV1-CaMKII-GCaMP6f-WPRE-SV40, Penn Vector Core; \cite{kuchibhotla17,ali20}). 
+To monitor VIP and PV neurons, we bred VIP::GCaMP6f and PV::GCaMP6f hybrid reporter mice (five mice and one mouse, respectively), which selectively express GCaMP6f in the cell-type of interest \citep{daigle18,devries20}. 
+To monitor pyramidal neurons, five PV-cre::tdTomato mice were injected intracranially with an AAV encoding GCaMP6f under control of the CaMKII-promoter (AAV1-CaMKII-GCaMP6f-WPRE-SV40, Penn Vector Core; \cite{kuchibhotla17,ali20}).
 
 \subsubsection*{Intracranial Injections and Cranial Window Implantation}
-Subjects were treated preoperatively with analgesic and antiinflammatory drugs (car\-profen, 5 mg/kg, SC, \#024751, Butler Animal Health; and dexamethasone, 3 mg/kg, SC, Dexaject SP, \#002459, Henry Schein Animal Health). Anesthesia was induced with 2\% isoflurane in oxygen, and then gradually reduced to 1--1.5\% for the remainder of the procedure. A water-circulating heating pad (Gaymar Stryker) was placed under the animal’s body, and maintained at 38\si{\celsius}.
+Subjects were treated preoperatively with analgesic and anti-inflammatory drugs (carprofen, 5 mg/kg, SC, \#024751, Butler Animal Health; and dexamethasone, 3 mg/kg, SC, Dexaject SP, \#002459, Henry Schein Animal Health). Anesthesia was induced with 2\% isoflurane in oxygen, and then gradually reduced to 1--1.5\% for the remainder of the procedure. A water-circulating heating pad (Gaymar Stryker) was placed under the animal’s body, and maintained at 38\si{\celsius}.
 
 After stabilizing the head in a stereotaxic frame with ear bars (David Kopf Instruments), the scalp was shaven and cleaned with Betadine (Perdue Products L.P.). The surface of the skull was then exposed through a midsagittal incision extending from the interaural line to the level of the orbits. The periosteum was removed, and the skull cleaned, by scrubbing briefly with 3\% hydrogen peroxide on a cotton swab. All contacted tissue was then rinsed immediately with artificial cerebrospinal fluid (aCSF; in mM: 5 KCl, 5 HEPES, 135 NaCl, 1 MgCl$_2$, 1.8 CaCl$_2$; pH 7.3).
 
-A 3-mm-diameter circular craniotomy, centered approximately over the target location in M2 (AP, $bregma + 1.5$ mm; ML, $bregma - 0.5$ mm), was made using a 400-\si{\um}-diameter spherical bur attached to a Foredom dental drill. The circumscribed section of skull was then carefully removed with fine forceps to expose the dura. A small cube of Gelfoam (McKesson), presaturated with aCSF, was immediately applied to ensure hemostasis. Several additional cubes of saturated Gelfoam were used to gently cleanse the dural surface of any debris.
+A 3-mm-diameter circular craniotomy, centered approximately over the target location in M2 (AP, $\mathit{bregma}+1.5$ mm; ML, $\mathit{bregma}-0.5$ mm), was made using a 400-\si{\um}-diameter spherical bur attached to a Foredom dental drill. The circumscribed section of skull was then carefully removed with fine forceps to expose the dura. A small cube of Gelfoam (McKesson), presaturated with aCSF, was immediately applied to ensure hemostasis. Several additional cubes of saturated Gelfoam were used to gently cleanse the dural surface of any debris.
 
-For procedures requiring intracranial AAV injections, a fine-tipped glass micro\-pipette was secured to a microinjection system (Nanoject II, Drummond) and front-filled with ~1.5 \si{\uL} of the viral suspension. All viruses were stored as frozen aliquots, and diluted to approximately 1012 genome copies per mL in PBS prior to injection. Four injections were made, forming a 200-\si{\um}-wide square centered on the target location. Approximately 46 nL were injected into each site, at a depth of 400 \si{\um} below the dura. After the last injection, the dura was cleaned thoroughly with saturated Gelfoam.
+For procedures requiring intracranial AAV injections, a fine-tipped glass micropipette was secured to a microinjection system (Nanoject II, Drummond) and front-filled with ~1.5 \si{\uL} of the viral suspension. All viruses were stored as frozen aliquots, and diluted to approximately 1012 genome copies per mL in PBS prior to injection. Four injections were made, forming a 200-\si{\um}-wide square centered on the target location. Approximately 46 nL were injected into each site, at a depth of 400 \si{\um} below the dura. After the last injection, the dura was cleaned thoroughly with saturated Gelfoam.
 
 A glass window implant was then fit to the craniotomy and glued to the surrounding skull surface. The implant consisted of five concentric, \#1 thickness, circular glass coverslips (Warner Instruments) joined with an optical adhesive (NOA 61, Norland). The superficial layer was wider than the remaining layers (4- vs. 3-mm-diameter), to form a lip that could be attached to the skull. Prior to implantation, the window was swabbed thoroughly with 90\% ethanol and then rinsed with aCSF. After flooding the craniotomy with aCSF, the implant was lowered into place and secured with a high-viscosity adhesive (Loctite 454). After allowing ~10 min for the adhesive to cure, a custom-made stainless steel headplate (eMachineShop.com) was cemented to the skull with C\&B Metabond (Parkell). Care was taken to cover any exposed bone.
 
 Subjects were treated post-operatively with carprofen (5 mg/kg, SC), diluted to 0.17 mg/mL in 0.9\% preservative-free saline (Hospira) for fluid support. The treatment was repeated twice daily for three days following the surgery, along with a daily injection of dexamethasone (3 mg/kg, SC). At least one full week was allowed for recovery prior to behavioral training.
 
-\subsubsection*{Two-Photon Imaging}
-To image neural activity at cellular resolution in vivo, an ultrafast laser beam (Cha\-meleon Ultra II, Coherent) was focused on the brain tissue through a water immersion objective (XLUMPLFLN, 20X/0.95 NA; Olympus) attached to a Movable Objective Microscope (Sutter Instrument). Ultrasound gel (\#9004352SM, Henry Schein) was applied to the cranial window as an immersion medium, to prevent a gradual image degradation observed in earlier experiments due to evaporation.
+\subsubsection*{Two-Photon Microscopy}
+To image neural activity at cellular resolution in vivo, an ultrafast laser beam (Chameleon Ultra II, Coherent) was focused on the brain tissue through a water immersion objective (XLUMPLFLN, $20\times$/0.95 NA; Olympus) attached to a Movable Objective Microscope (Sutter Instrument). Ultrasound gel (\#9004352SM, Henry Schein) was applied to the cranial window as an immersion medium, to prevent a gradual image degradation observed in earlier experiments due to evaporation.
 Excitation power after the objective was adjusted using a Pockels cell (350-80-LA-
 02; Conoptics), up to a maximum of 100 mW. Emitted fluorescence was split between two channels and bandpass filtered at center wavelengths of 525 nm (GCaMP6) and 605 nm (tdTomato) prior to collection by a set of GaAsP photomultiplier tubes (H7422P-40MOD; Hamamatsu). Excitation wavelength was set to 1020--1050 nm for most experiments, in order to optimize the GCaMP6:tdTomato emission ratio. For single-channel GCaMP6 imaging, an excitation wavelength of 940 nm was used.
 
-Image acquisition was controlled by the ScanImage package for MATLAB \citep{pologruto03}. Time-lapse images of the field-of-view were acquired using a bidirectional raster scan at 1kHz. Each imaging frame contained 256 × 256 pixels, for a nominal frame rate of 3.62 Hz including flyback time. Frames from each behavioral trial were saved separately in multi-page tagged image file format (TIFF). Imaging and behavioral data were synchronized by assigning an external trigger in ScanImage to a TTL pulse sent by NBS Presentation at the start of each trial. Upon receiving the trigger, ScanImage would write the current frame to the first page of a new TIFF. A timestamp for the trigger would be recorded in the TIFF header, as well as in a text file logged by Presentation.        
+Image acquisition was controlled by the ScanImage package for MATLAB (The MathWorks) \citep{pologruto03}. Time-lapse images of the field-of-view (FOV) were acquired using a bidirectional raster scan at 1kHz. Each imaging frame contained $256 \times 256$ pixels, for a nominal frame rate of 3.62 Hz including flyback time. Frames from each behavioral trial were saved separately in multi-page tagged image file format (TIFF). Imaging and behavioral data were synchronized by assigning an external trigger in ScanImage to a TTL pulse sent by NBS Presentation at the start of each trial. Upon receiving the trigger, ScanImage would write the current frame to the first page of a new TIFF. A timestamp for the trigger would be recorded in the TIFF header, as well as in a text file logged by Presentation.        
 
-The target imaging location in M2 was found before each session as follows. The AP coordinate (bregma+1.5mm) was approximated by centering the field-of-view (FOV) on a small dot that had been marked in permanent ink along the perimeter of the cranial window during stereotaxic surgery surgery. The ML coordinate (bregma-1.5mm) was approximated by centering the FOV on the superior sagittal sinus and then subtracting 500 \si{\um}. Some deviations from these coordinates were permitted, eg, in cases of occluding blood vessels, but all FOVs analyzed were centered within 200 \si{\um} of the target location. The approximate anatomical depth of each FOV was estimated as the distance from a focal plane centered on the dura directly above it, calculated from the corresponding depth measurements displayed on the microcontroller. Depth ranged 212--415 \si{\um} for SST sessions (mean: 228 \si{\um}, N=14), 109--216 for VIP sessions (mean: 175 \si{\um}, N=19), 215--383 for PV sessions (mean: 292, N=12), and 170--278 for PYR sessions (mean: 219, N=20). Brain tissue was not analyzed post-mortem to confirm the estimated imaging locations, but all fields-of-view were assumed to be within layers 2/3 of M2.
+The target imaging location in M2 was found before each session as follows. The AP coordinate ($\mathit{bregma}+1.5$ mm) was approximated by centering the FOV on a small dot that had been marked in permanent ink along the perimeter of the cranial window during stereotaxic surgery surgery. The ML coordinate ($\mathit{bregma}-1.5$ mm) was approximated by centering the FOV on the superior sagittal sinus and then subtracting 500 \si{\um}. Some deviations from these coordinates were permitted, eg, in cases of occluding blood vessels, but all FOVs analyzed were centered within 200 \si{\um} of the target location. The approximate anatomical depth of each FOV was estimated as the distance from a focal plane centered on the dura directly above it, calculated from the corresponding depth measurements displayed on the microcontroller. Depth ranged 212--415 \si{\um} for SST sessions (mean: 281 \si{\um}, $N=13$), 109--216 \si{\um} for VIP sessions (mean: 175 \si{\um}, $N=19$), 215--383 \si{\um} for PV sessions (mean: 292 \si{\um}, $N=12$), and 170--278 \si{\um} for PYR sessions (mean: 219 \si{\um}, $N=20$). Brain tissue was not analyzed post-mortem to confirm the estimated imaging locations, but all fields-of-view were assumed to be within layers 2/3 of M2.
 
 \subsection*{Analysis of Behavioral Data}
+The timing of all events in the behavioral task were logged to a text file by Presentation, and were processed offline in MATLAB. Events included sound cue onsets, licks detected at each spout, and water reward deliveries. 
+
+Lick density was calculated across trials as mean the number of licks/s within each non-overlapping 100 ms time bin from -2 to 5 s relative to cue onset. Lick lateralization was defined as the mean difference between the number of licks/s detected at the left and right water spouts within a given time interval relative to cue onset. For example, we calculated lick lateralization during the cue period (Fig. \ref{fig:Fig2}E) by subtracting the mean left lick rate from the mean right lick rate during the 2 s following cue onset in each trial, and then taking the mean across trials.
+
+Hits were defined as rewarded choices. Errors (unrewarded choices) were divided into two types: \emph{perseverative} and \emph{other}. Perseverative errors were choices inconsistent with the current rule but consistent with the previous rule, and other errors were choices consistent with neither the current nor previous rule. Misses occurred when no choice was made within the 2 s response window following cue onset.
+
+We calculated the proportion of hits, perseverative errors, other errors, and misses as a function of the number of trials from a rule switch using all trial outcomes between -20 and 19 trials from the first trial of each completed rule block. 
+
+The number of trials to criterion was defined as the number of trials required to complete each rule block, excluding the initial sound block and the incomplete block terminating each session.
+
 \subsection*{Analysis of Imaging Data}
-\subsubsection*{Movement Correction}
+
+All calcium imaging data were processed offline using custom computer code written for MATLAB.  
+
+\subsubsection*{Motion Correction}
+Brain movement artifacts in the raw imaging data were corrected using a recursive algorithm based on NoRMCorre \citep{pnevmatikakis2017normcorre} for MATLAB. First, a rough correction of rigid motion artifacts was performed on the middle 1000 frames of each session, and an initial template image for the FOV was generated using the mean projection of the corrected frames across time. 
+
+All frames from the entire session were then corrected for rigid motion artifacts based on this template, and the translation of each frame in x-y space was recorded. If the maximum translation across frames exceeded 1 pixel, then a new template image was generated from the corrected frames to be used for another round of motion correction on the corrected frames. The process was repeated for a maximum of three iterations.
+
+Next, the rigid motion-corrected frames were corrected for non-rigid motion artifacts. NoRMCorre divides the FOV into a grid of square overlapping segments for independent motion correction. The same recursive algorithm was used as for rigid correction, except that the threshold translation distance triggering further iterations was calculated across all grid squares in all frames. This process was repeated for a maximum of 10 iterations.
+
+% Next, the rigid motion-corrected frames were corrected for non-rigid motion artifacts using NoRMCorre, with \texttt{grid\_size} set to 64 and \texttt{overlap\_pre} set to 16. These parameters divided the FOV into a $4\times4$ grid for independent motion correction, with 16 pixels of overlap between adjacent segments. The same recursive algorithm was used as for rigid correction, except that the threshold translation distance triggering further iterations was calculated across all grid squares in all frames. The process was repeated for a maximum of 10 iterations.
+
+Wherever possible, neuronal tdTomato fluorescence was imaged as an anatomical reference simultaneously with GCaMP signals. In these cases, the motion-correction process described above was applied to the imaging data from the red (tdTomato) channel. All image translations occurring during movement correction were recorded and then applied to the green (GCaMP) channel.
+
+Motion correction was verified visually by examining the maximum projection for sharp cell boundaries, as well as by playing back the corrected TIF files in ImageJ (NIH).   
+
 \subsubsection*{Cellular Fluorescence Measurements}
-\subsubsection*{Alignment and Trial Averaging}
-\subsubsection*{Modulation of Neural Activity by Task Variables}
+\hypertarget{methods_dFF}{}
+
+Regions-of-interest (ROIs) corresponding to putative neuronal cell bodies were selected manually in each FOV, using a custom graphical user interface written for MATLAB. A combination of the mean, maximum, and variance projections across time were used to identify GCaMP\textsuperscript{+} cell bodies. 
+
+For each cell, we extracted a raw fluorescence time series $F$ using the mean pixel intensity within the corresponding ROI boundary in each frame. Any pixels shared between multiple ROIs were excluded from analysis. 
+
+We also extracted a background fluorescence time series $F_{\mathit{background}}$ using the mean pixel intensity within $2r$ of the centroid of each ROI, where $r$ is the radius of a circle with the same area. Pixels overlapping any ROIs were ignored.
+
+The cellular fluorescence time series, $\frac{\Delta F}{F}$ was then calculated for each time point $t$ as 
+\begin{equation*}
+\frac{F(t)-F_0(t)}{F_0(t)},
+\end{equation*} where $F_0(t)$ is the fifth percentile of $F$ within a sliding window of 10 min duration centered on $t$.  
+
+Image acquisition times $t$ for each frame relative to the start of the session were estimated using timestamps logged by the Presentation software at the start of each trial, when acquisition of a new image stack was initiated by an external trigger sent by Presentation to ScanImage. From these timestamps and the number of frames acquired in each stack, we calculated the effective frame rate $\frac{1}{\delta t}$ for each trial, which was then used to determine individual frame times. 
+
+Cells for which the mean of $F_{0,\mathit{background}}$ across all time points exceeded that of $F_{0}$ were excluded from the analysis, because in these cases $F_{0}$ was deemed unreliable as a baseline measurement for calculating $\frac{\Delta F}{F}$ \citep{dana2014thy1}. These amounted to 1\% of SST, 2\% of VIP, 0\% of PV, and 25\% of PYR neurons.
+% These amounted to 4/290 putative SST, 9/488 putative VIP, 0/263 putative PV, and 993/3952 (25\%) of PYR neurons.
+
+\subsubsection*{Alignment of Cellular Fluorescence to Behavioral Trials}
+
+To examine the relationship between neural activity and behavior, we aligned cellular fluorescence signals according to acquisition time in the trial. The $\frac{\Delta F}{F}$ time series was first interpolated at 20 Hz. Traces for each trial were then obtained by assigning the resulting values to non-overlapping time bins of 50 ms duration, spanning the period between -2 and 5 s from each cue onset.
+
+We tested the dependence of cellular fluorescence on the temporal structure of the task by comparing the mean $\frac{\Delta F}{F}$ obtained in the 2 s prior to each cue onset with the mean $\frac{\Delta F}{F}$ obtained in the 5 s following it. Cells with a significant mean difference (p<0.05, Wilcoxon signed rank test) were considered to have been modulated by the task.
+
+\subsubsection*{Quantifying Modulation of Neural Activity by Choices, Outcomes, and Rules}
+\hypertarget{methods_ROC}{}
+
+% We quantified single-unit signals for choice, outcome, and rule context using a modulation index derived from the area under the receiver operating characteristic (ROC) given by the distributions of $\frac{\Delta F}{F}$ obtained in trials that differed according to each of these variables.
+We quantified single-unit signals for choice, outcome, and rule context using a modulation index derived from the receiver operating characteristic (ROC). The ROC is defined for a binary classifier by the true positive rate (TPR) as a function of the false positive rate (FPR) at a series of detection thresholds. The area under the curve (AUC) described by these coordinates serves as an unbiased estimate for the discriminability of the two distributions.
+
+We estimated the AUC as a function of time relative to the start of each trial, using cellular fluorescence traces obtained during subsets of trials that differed according to the behavioral variable of interest. First, we selected subsets of trials that differed according to each variable of interest. Wherever feasible, subsets were chosen such that the other variables under study were held constant, in order to mitigate possible interaction effects. For example, the results of an earlier study with a similar task structure revealed that omitted rewards can reduce the fidelity of choice signals measured from individual neurons \citep{siniscalchi2019enhanced}. 
+
+To examine choice-related modulation, we grouped $\frac{\Delta F}{F}$ traces based on whether the left or right spout was chosen in the corresponding trial. The analysis was limited to rewarded choices, and traces obtained during sound and action trials were analyzed separately. 
+
+For outcome-related modulation, traces were grouped according to the outcome of choices made in the current trial. We separately considered the effects of the current trial outcome on neural activity in the current and subsequent trial. For the current trial, the analysis was limited to trials preceded by a rewarded choice. For the subsequent trial, we only considered trials in which the corresponding choice was rewarded. In both cases, different choices were pooled, but were assumed to be approximately balanced by the task design.
+
+For context-related modulation, we compared traces from sound and action trials in which the same choice was made in response to the same sound cue (eg, upsweep-left-sound trials vs. upsweep-left-action trials). We limited the analysis to rewarded choices made during the final twenty trials of each block---the period when choices were most consistent with the current rule context. 
+
+To arrive at the AUC, one of the two values for the variable of interest was arbitrarily chosen as the positive class: $\mathit{choice}=\mathit{left}$, $\mathit{outcome}=\mathit{reward}$, or $\mathit{rule}=\mathit{sound}$. Thus, trials where $\mathit{choice}=\mathit{right}$, $\mathit{outcome}=$ \emph{no reward} (ie, errors), or $\mathit{rule}=\mathit{action}$ were assigned the negative class for the analysis of choice-, outcome-, and context-related modulation, respectively. 
+
+For each 250 ms time-bin $t$ between -2 and 5 s from the sound cue, we defined a series of threshold values $T$ using all unique $\frac{\Delta F}{F}(t)$ measurements from both positive and negative trials. The TPR was calculated at each threshold $T_i$ as the proportion of values from the positive class that were $\ge T_i$. The corresponding FPR reflected the proportion of values $\ge T_i$ belonging to the negative class.  The trapezoid rule was then used to estimate the AUC.
+
+Based on the AUC at time $t$, we calculated a modulation index, $I(t) = 2(\mathit{AUC} - 0.5)$. Thus, $I$ could range from -1 to 1, with positive and negative values reflecting a preference for the positive and negative class, respectively, and its magnitude $M$ reflecting the signal reliability irrespective of preference. 
+
+To test the statistical significance of modulation with respect to each behavioral variable, we compared the observed value of each $I(t)$ to a null distribution $I_0(t)$ generated by replicating the analysis 1000 times using shuffled class labels. The modulation index $I(t)$ was found significant if its value was more extreme than the middle 95\% of $I_0(t)$. A neuron was determined to be significantly modulated by a given behavioral variable only if $I$ rose to significance across four consecutive time bins (ie, for a duration of 1 s).
+
+To summarize modulation within each cell type, we calculated five statistics as point estimates from each session. As estimates of signal strength, we calculated the mean modulation magnitude $\Bar{M}$ across neurons, and the proportion of significantly modulated neurons $P$. As estimates of preference, we calculated the mean modulation index $\Bar{I}$, as well as the proportions of neurons with a significant positive or negative modulation index $P^+$  and $P^-$, respectively.
+
+Scalar estimates for $\Bar{I}$ and $\Bar{M}$ were obtained by taking the mean across all time points within the first 5 s following the sound cue. However, we also characterized signal dynamics within each cell type using the mean of ${I}(t)$ and ${M}(t)$ across neurons in each session for each time-bin $t$. 
+% However, we also characterized signal dynamics within each cell type using $\Bar{I}(t)$ and $\Bar{M}(t)$, as well as $P(t)$, the proportion of neurons per session with a significant $I(t)$, for each time-bin $t$. 
+
+For $\Bar{I}$, we also calculated $\Bar{I_0}$, the grand mean of the corresponding null distributions across all neurons in each session. A signed rank test was then used to determine whether the distribution of $\Bar{I}$ across sessions differed significantly from that of $\Bar{I_0}$. For comparisons across cell types, the difference between $\Bar{I}$ and $\Bar{I_0}$ was used as a corrected point estimate for each session. The same procedure was used for $\Bar{M}$.
+
+For $P$, we estimated a false discovery rate (FDR) for each session, defined as the proportion of shuffles resulting in a determination of significant modulation (ie, the proportion of individual shuffles in $I_0$ with four consecutive time-bins more extreme than the middle 95 percentiles). In comparisons across cell types, point estimates for $P$ were first corrected by subtracting the corresponding FDR.  
 
 \subsection*{Statistics}
 All statistics were computed in MATLAB.
 
-Descriptive statistics are reported either as the \emph{sample} $mean \pm SEM$, or as the sample median and interquartile range (IQR), at a precision consistent with the primary data. For all analyses, point estimates were calculated as the mean within each session, and the sample size $N$ was given by the number of sessions considered. 
+Descriptive statistics are reported as the sample $mean \pm SEM$, at a precision consistent with the primary data. For all analyses, point estimates were calculated as the mean within each session, and the sample size $N$ was given by the number of sessions considered. 
 
-For behavioral comparisons, the sampling distribution for the mean difference across groups was assumed to be normal. No explicit test of normality was performed. However, the sample size  ($N=65$) was sufficiently large to rely on parametric statistics. Specifically, a paired t-test was used for comparisons across two groups (eg, hit vs. error trials). For comparisons across sound, action-left, and action-right blocks, a repeated measures model was fit to the data using the function \texttt{fitrm}, with the session number included as the only between-subjects factor. A two-way, within-subject design was used to assess the main effects of \emph{cue} and \emph{block-type}, as well as any \emph{cue} $\times$ \emph{block-type} interaction. All $F$-statistics were estimated by feeding the parameters of the model into the function \texttt{ranova}.
+For behavioral comparisons, the sampling distribution for the mean difference across groups was assumed to be normal. No explicit test of normality was performed. However, the sample size  ($N=64$) was sufficiently large to rely on parametric statistics. Specifically, a paired t-test was used for comparisons across two groups (eg, hit vs. error trials). For comparisons across sound, action-left, and action-right blocks, a repeated measures model was fit to the data using the function \texttt{fitrm}, with the session index included as the only between-subjects factor. A two-way, within-subject design was used to assess the main effects of cue and block-type, as well as any \emph{cue} $\times$ \emph{block-type} interaction. $F$-statistics were estimated by feeding the parameters of the model into the function \texttt{ranova}.
 
-Neural preference and selectivity measures were compared to null results generated using shuffled trial types. These comparisons were made within each cell type, and hence sample sizes were smaller (range: 12--20 sessions). Additionally, the empirical distributions were often notably skewed, with unequal variances relative to the corresponding null distribution. Therefore, a signed-rank test was used for these comparisons. For comparisons across multiple cell types we used the Kruskal-Wallis $H$-test, followed by Tukey's post hoc method for multiple comparisons. 
+Measures of neural preference (eg, $I_{\mathit{choice}}$, $P_{\mathit{left}}$, and $P_{\mathit{right}}$) and signal reliability (eg, $M_{\mathit{choice}}$ and $P_{\mathit{choice}}$) were compared to null results generated using shuffled trial types. These comparisons were made within each cell type, and hence sample sizes were smaller (range: 12--20 sessions). Additionally, the empirical distributions were often notably skewed, with unequal variances relative to the corresponding null distribution. Therefore, a signed-rank test was used for these comparisons. For comparisons across multiple cell types we used the Kruskal-Wallis $H$-test, followed by Tukey's post hoc method for multiple comparisons. 
+
+\subsection*{Code Availability} All custom computer code used in this study will be made available at \url{www.github.com/Kwan-Lab}

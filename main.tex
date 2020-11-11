@@ -3,44 +3,77 @@
 % \documentclass[12pt, oneside, draft]{book}
 
 \usepackage[letterpaper, margin=1in, bindingoffset=0.5in]{geometry}
-\usepackage{setspace} %\doublespacing
+\usepackage{microtype} %Upgraded typesetting
+\usepackage{lmodern} %Latin modern font
+\usepackage{setspace} %For \doublespacing
+\usepackage{fancyhdr} %For Header and Footer
+\usepackage{type1cm} %Dropped caps for beginning chapters
+\usepackage{lettrine} %Ibid.
+
+
 \usepackage{float} % Floats such as figures and tables
-\usepackage[font=small]{caption} % Customize caption formatting; [font=small], etc
+\usepackage[font=footnotesize,labelfont=bf]{caption} % Customize caption formatting; [font=small], etc
+\usepackage[rightcaption]{sidecap}
 \usepackage[closeFloats]{fltpage} %For long captions->adjacent page; <CaptionAfterwards, closeFloats>
 \usepackage{booktabs} %For midrules/endrules in tables
+
 \usepackage[english]{babel} %
 \usepackage[utf8]{inputenc} %For unicode symbols
-% \usepackage[T1]{fontenc} %Font encoding
+\usepackage[T1]{fontenc} %Font encoding
 \usepackage{amsmath} %Math display notation
 \usepackage{siunitx} %Scientific units
-\usepackage{graphicx} %Gr
+\usepackage{textcomp} %More symbols
+\usepackage{graphicx} %For figure graphics
+
 \usepackage[round,authoryear]{natbib} %Citations and bibliography; numeric once refs are verified.
-\usepackage{type1cm} %Dropped caps for beginning chapters
-\usepackage{lettrine} %Ibid. 
+% \usepackage[style=authoryear-comp,natbib=true]{biblatex} %Rumored to be better than natbib
+\usepackage[colorlinks, allcolors=black]{hyperref}
 
-\usepackage{fancyhdr} %For Header and Footer
-\setlength{\headheight}{15pt}% ...at least 51.60004pt
+\usepackage{tocloft} %For adjusting Table of Contents and List of Figures
 
-\graphicspath{./Figures}
+% Set Global Parameters
+\setlength{\headheight}{15pt}
+\setlength{\cftfignumwidth}{3em}  % increase fig number width in lof
+\setlength{\emergencystretch}{3pt} %Deal with overfull hboxes by stretching lines a little more
+\sidecaptionvpos{figure}{c} %Center side captions vertically
+\graphicspath{./Figures} %Command from graphicx
+\DeclareGraphicsExtensions{.pdf,.png,.jpg} %
 
 % Custom Commands & Macros
-%If unnumbered (sub)sections are desired:
-\newcommand{\nnsub}[1]{\subsection*{#1} \addcontentsline{toc}{subsection}{#1}}
+% Unnumbered chapters & sections:
+\newcommand{\nnchap}[1]{\chapter*{#1}\addcontentsline{toc}{chapter}{#1}}
+\newcommand{\nnsec}[1]{\section*{#1}\addcontentsline{toc}{section}{#1}}
+\newcommand{\nnsub}[1]{\subsection*{#1}\addcontentsline{toc}{subsection}{#1}}
+\newcommand{\nnsubsub}[1]{\subsubsection*{#1}\addcontentsline{toc}{subsubsection}{#1}}
 
-% \includeonly{Chapter4} % To work on parts without rendering all
+% Single-space headings
+\usepackage{sectsty}
+\allsectionsfont{\singlespacing\raggedright}
+
+% \includeonly{%
+% Introduction,
+% Chapter2, 
+% Chapter3
+% Chapter4
+% Summary
+% } % To work on parts without rendering all
+
+%Look at formatting of Chapter 1 Methods (ex 2 to 4, etc. should be consistent)
 
 %--------------------------------------------------------------------
 
 \begin{document}
 
 % Document Parameters
-%\setcitestyle{authoryear} %Set to numeric style once finalized...
+\setcitestyle{authoryear} %Set to numeric style once finalized...
+\doublespacing
 
 % --- FRONT MATTER --------------------------------------------------
 \frontmatter
 \pagestyle{plain} %Just page numbers for now
 
 % Abstract Page
+% \phantomsection %May be necessary with hyperref
 \addcontentsline{toc}{chapter}{Abstract}
 \include{Frontmatter/Abstract}
 
@@ -50,8 +83,12 @@
 % Copyright Notice
 \include{Frontmatter/Copyright_Notice}
 
-% Table of Contents
-\tableofcontents
+% --- Table of Contents and Lists ----------
+\begin{singlespace} %(single-spaced)
+
+ % Table of Contents
+\setcounter{tocdepth}{3}
+\singlespace{\tableofcontents}
 
 % List of Figures
 \clearpage %\cleardoublepage %for openright
@@ -62,6 +99,9 @@
 \clearpage %\cleardoublepage %for openright
 \addcontentsline{toc}{chapter}{\listtablename} %Add line to contents page
 \listoftables
+
+\end{singlespace}
+%------------------------------------------
 
 % Acknowledgments
 \clearpage %\cleardoublepage %for openright
@@ -76,22 +116,22 @@
 % --- MAIN TEXT -----------------------------------------------------
 \mainmatter
 
-% Setup Header for Main Text
-\input{Header}
-
 % Chapters
 \include{Introduction}
+\input{Header} % Setup Header for Main Text 
 \include{Chapter2} % From Cerebral Cortex
 \include{Chapter3} % From Nature Neuroscience
 \include{Chapter4}
+\include{Summary}
 
 % --- BACK MATTER ----------------------------------------------------
 \clearpage %\cleardoublepage %for openright
-\addcontentsline{toc}{chapter}{Bibliography}
-
 \pagestyle{plain} %Just page numbers
+\addcontentsline{toc}{chapter}{Bibliography}
+\singlespacing %(single-spaced)
+
 \bibliographystyle{plainnat}
-\bibliography{references}
+\bibliography{references.bib}
 
 \end{document}
 
@@ -103,6 +143,11 @@
 %
 % Use this syntax for scientific notation: \num{3e-45}
 
+%To reset figure counters at start of each chapter
+% \setcounter{figure}{0} 
+%For Supplementary Materials:
+% \renewcommand\thefigure{S\arabic{figure}}
+% \setcounter{figure}{0} 
 %--- PACKAGES ----------------------------------------------------------------
 %
 %\usepackage[notoc]{tocbibind} %To include Lists of Figures and Tables in TOC
